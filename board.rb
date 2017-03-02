@@ -1,12 +1,12 @@
 class Board
-	attr_accessor :board 
+	attr_accessor :board #attr_accessor turn instance variable into instance method ( like @ no longer required ) in the class definition.
 
     def initialize
-        @board = ["", "", "", "", "","", "", "", ""]
+        @board = ["", "", "", "", "","", "", "", ""] #simply returning instance variable @board
     end
 
     def set_position(position, marker)
-       @board[position] = marker
+       @board[position] = marker  
     end
 
     def check_position?(position)
