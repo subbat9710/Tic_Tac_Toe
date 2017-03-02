@@ -62,33 +62,33 @@ class TestBoard < Minitest::Test
         result = board.check_position?(0)
 		assert_equal(false, result)
     end
-    def test_for_o_for_the_0_position_in_6
+    def test_for_o_for_the_position_in_6
 		board = Board.new
-        board.board = ["x", "0", "", "", "","o", "", "", ""]
+        board.board = ["x", "o", "", "", "","o", "", "", ""]
 		result = board.check_position?(1)
 		assert_equal(false, result)
     end
     def test_for_minus_four_position
     	board = Board.new
-    	board.board = ["x", "0", "", "", "", "", "x", "x", "x"]
+    	board.board = ["x", "o", "", "", "", "", "x", "x", "x"]
     	result = board.check_position?(-4)
     	assert_equal(true, result)
     end
     def test_for_fiften_position
     	board = Board.new
-    	board.board = ["x", "0", "", "", "", "", "x", "x", "x"]
+    	board.board = ["x", "o", "", "", "", "", "x", "x", "x"]
     	result = board.check_position?(15)
     	assert_equal(false, result)
     end
     def test_full_board_equals_game_over
     	board = Board.new
-    	board.board = ["x", "0", "0", "0", "0", "x", "x", "x", "x"]
+    	board.board = ["x", "o", "o", "o", "o", "x", "x", "x", "x"]
     	result = board.check_full?
         assert_equal(true, result)
     end
     def test_almost_full
     	board = Board.new
-    	board.board = ["x", "x", "0", "0", "0", "", "x", "x", "x"]
+    	board.board = ["x", "x", "o", "o", "o", "", "x", "x", "x"]
     	result = board.check_full?
     	assert_equal(false, result)
     end
