@@ -14,28 +14,28 @@ class TestBoard < Minitest::Test
 		result =["x", "", "", "", "","", "", "", ""]
 		assert_equal(result, board.board)
     end
-    def test_for_o_for_the_fifth_position
+    def test_o_for_the_fifth_position
 		board = Board.new
 		board.set_position(0, "x")
-		board.set_position(5, "o")
-		result = ["x", "", "", "", "","o", "", "", ""]
+		board.set_position(4, "o")
+		result = ["x", "", "", "", "o","", "", "", ""]
 		assert_equal(result, board.board)
     end
-    def test_for_o_for_the_seventh_position
+    def test_o_for_the_eighth_position_and_x_for_first
 		board = Board.new
 		board.set_position(0, "x")
 		board.set_position(7, "o")
 		result = ["x", "", "", "", "","", "", "o", ""]
 		assert_equal(result, board.board)
     end
-    def test_for_x_for_the_eight_position
+    def test_for_x_for_the_eight_position_o_at_fifth
 		board = Board.new
-        board.board = ["x", "", "", "", "","o", "", "", ""]
-		board.set_position(8, "x")
-        result = ["x", "", "", "", "","o", "", "", "x"]
+        board.board = ["x", "", "", "", "o","", "", "", ""]
+		board.set_position(7, "x")
+        result = ["x", "", "", "", "o","", "", "x", ""]
 		assert_equal(result, board.board)
     end
-    def test_for_x_for_the_second_position
+    def test_for_x_for_the_third_position_o_at_sixth
 		board = Board.new
         board.board = ["x", "", "", "", "","o", "", "", ""]
 		board.set_position(2, "x")
@@ -56,29 +56,23 @@ class TestBoard < Minitest::Test
         result = ["x", "", "", "", "","o", "x", "", ""]
 		assert_equal(result, board.board)
 	end
-    def test_for_o_for_the_eight_position
+    def test_for_spot_already_taken
 		board = Board.new
-        board.board = ["x", "", "", "", "","o", "", "", ""]
-        result = board.check_position?(0)
+        board.board = ["x", "", "", "", "o","", "", "", ""]
+        result = board.check_position?(4)
 		assert_equal(false, result)
     end
-    def test_for_o_for_the_position_in_6
+    def test_for_spot_is_open
 		board = Board.new
-        board.board = ["x", "o", "", "", "","o", "", "", ""]
-		result = board.check_position?(1)
-		assert_equal(false, result)
+        board.board = ["x", "", "", "", "o","", "", "", ""]
+		result = board.check_position?(3)
+		assert_equal(true, result)
     end
-    def test_for_minus_four_position
+    def test_for_all_spot_full
     	board = Board.new
-    	board.board = ["x", "o", "", "", "", "", "x", "x", "x"]
-    	result = board.check_position?(-4)
+    	board.board = ["x", "o", "x", "x", "o", "x", "x", "x", "x"]
+    	result = board.check_full?
     	assert_equal(true, result)
-    end
-    def test_for_fiften_position
-    	board = Board.new
-    	board.board = ["x", "o", "", "", "", "", "x", "x", "x"]
-    	result = board.check_position?(15)
-    	assert_equal(false, result)
     end
     def test_full_board_equals_game_over
     	board = Board.new
@@ -86,7 +80,7 @@ class TestBoard < Minitest::Test
     	result = board.check_full?
         assert_equal(true, result)
     end
-    def test_almost_full
+    def test_board_is_almost_full
     	board = Board.new
     	board.board = ["x", "x", "o", "o", "o", "", "x", "x", "x"]
     	result = board.check_full?
@@ -96,6 +90,30 @@ class TestBoard < Minitest::Test
     	board = Board.new
     	board.board = ["", "", "", "", "", "", "", "", ""]
     	result = board.check_full?
+    	assert_equal(false, result)
+    end
+    def test_for_winner_first_row
+    	board = Board.new
+    	board.board = ["x", "x", "x", "0", "", "o", "x", "o", "x"]
+    	result = board.stub_winner?
+    	assert_equal(true, result)
+    end
+    def test_for_winner_second_row
+    	board = Board.new
+    	board.board = ["o", "x", "x", "o", "o", "o", "x", "o", "x"]
+    	result = board.stub_winner?
+    	assert_equal(true, result)
+    end
+    def test_for_winner_third_row
+    	board = Board.new
+    	board.board = ["x", "0", "", "0", "", "o", "x", "x", "x"]
+    	result = board.stub_winner?
+    	assert_equal(true, result)
+    end
+    def test_for_losser
+    	board = Board.new
+    	board.board = ["x", "0", "", "0", "", "o", "x", "", "x"]
+    	result = board.stub_losser?
     	assert_equal(false, result)
     end
 end
