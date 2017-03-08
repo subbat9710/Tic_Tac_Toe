@@ -32,12 +32,22 @@ class Board
                     o_counter += 1
                 end
                 if x_counter == 3
-                   winner = true
+                    winner = true
                 else o_counter == 3
-                   winner = true
+                    winner = true
                 end
             end
         end
         return winner 
+    end
+    def winner
+        if stub_winner? 
+            puts "someone won"
+        end
+    end
+    def tie
+        if stub_winner? == false && check_full? == true
+            puts "game is tie"
+        end
     end
 end

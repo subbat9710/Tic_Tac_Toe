@@ -110,10 +110,10 @@ class TestBoard < Minitest::Test
     	result = board.stub_winner?
     	assert_equal(true, result)
     end
-    #def test_for_losser
-    #	board = Board.new
-    #	board.board = ["x", "0", "", "0", "", "o", "x", "", "x"]
-    #	result = board.stub_losser?
-    #	assert_equal(false, result)
-    #end
+    def test_for_tie
+    	board = Board.new
+    	board.board = ["x", "0", "x", "o", "x", "x", "o", "x", "o"]
+    	result = board.stub_winner?
+    	assert_equal(true, result)
+    end
 end
