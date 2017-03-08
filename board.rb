@@ -19,10 +19,7 @@ class Board
     def check_full?()
     	@board.count("") == 0
     end
-    def stub_winner?
-    	true
-    end
-    def stub_losser?
-        false
-    end
+    #def stub_winner?
+    #   true
+    #end
 end
