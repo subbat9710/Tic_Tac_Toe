@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require_relative "board_player.rb"
+require_relative "console.rb"
 
 class TestBoardPlayer < Minitest::Test
 

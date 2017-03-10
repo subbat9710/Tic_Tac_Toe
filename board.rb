@@ -19,7 +19,7 @@ class Board
     def check_full?()
     	@board.count("") == 0 
     end
-    def stub_winner?
+    def stub_winner? #check if player won the game
         winner = false
         win_array = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
         win_array.each do |index|
@@ -51,3 +51,4 @@ class Board
         end
     end
 end
+game = Board.new
