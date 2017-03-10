@@ -28,4 +28,16 @@ class TestSequential < Minitest::Test
 	    board = ["x", "1", "", "2", "o","3", "7", "4", "8"]
 	    assert_equal(2, player.get_move(board))
 	end
+	def test_5_sequential
+		player = Sequential.new("x")
+		board2 = Board.new
+	    board = ["x", "1", "2", "", "o","6", "8", "7", "5"]
+	    assert_equal(3, player.get_move(board))
+	end
+	def test_6_sequential
+		player = Sequential.new("x")
+		board2 = Board.new
+	    board = ["x", "1", "2", "3", "","5", "6", "7", "8"]
+	    assert_equal(4, player.get_move(board))
+	end
 end	

@@ -1,5 +1,7 @@
 require_relative "board.rb"
+require_relative "sequential.rb"
 require_relative "board_player.rb"
+require_relative "random.rb"
 
 class Console
 	attr_accessor :board, :player
@@ -39,5 +41,5 @@ class Console
     	end
     end
 end
-    #console = Console.new
-    #console.draw_board
+    console = Console.new
+    console.draw_board
