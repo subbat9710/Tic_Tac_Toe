@@ -1,10 +1,19 @@
-class Human
-	attr_accessor :marker 
+class Player
+	attr_accessor :name, :marker
 
-	def initialize(marker)
-		@marker=marker
+	def initialize(name, marker)
+		@marker = marker
+		@name = name
     end
-    def get_move(currentplayer)
-    	currentplayer.get_move(board)
+
+    def get_move(board)
+    	puts "#{name}, pick a space"
+    	move = gets.chomp.to_i
+    	if board[move] == ""
+    		move 
+    	else
+    		puts "Invalid space"
+    		get_move(board)
+    	end
     end
 end

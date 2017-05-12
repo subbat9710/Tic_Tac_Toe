@@ -1,9 +1,16 @@
-class Game
-    attr_accessor :Board, :Player1, :Player2, :currentplayer
+require_relative "console.rb"
 
-    def initialize(players, board = Board.new)
-    	@players = (player1, player2)
-    	@board = board
-    	@currentplayer, @players = players.shuffle
-    end
+board = Board.new
+player1 = Player.new("Teela", "x")
+player2 = Unbeatable.new("o")
+console = Console.new(board, player1, player2)
+
+while !console.game_over?
+	console.switch_player(console.currentplayer)
+	move = console.get_move(board.board)
+    
+    board.set_position(move, console.currentplayer.marker)
+        console.display_board(board.board)
+    sleep 1
 end
+console.game_status

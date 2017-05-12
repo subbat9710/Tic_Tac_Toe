@@ -1,16 +1,23 @@
 require_relative "board.rb"
 require_relative "console.rb"
+require_relative "human.rb"
 
-class Random
+class RandomPlayer
 
-	attr_accessor :marker, :current_player
+	attr_accessor :marker, :currentplayer, :name
 
 	def initialize(marker)
 		@marker=marker
-		@current_player=current_player
+		@currentplayer=currentplayer
+		@name= "RandomPlayer"
 	end
 
-	def get_move(board, current_player)
-		board.sample(1 + rand(board.count))
+	def get_move(board)
+		    position = rand(0..8)
+        if board[position] != ""
+		    get_move(board)
+        else
+		    position
+		end
 	end
 end

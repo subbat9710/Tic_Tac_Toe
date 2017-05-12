@@ -1,8 +1,9 @@
 class Board
-	attr_accessor :board #attr_accessor turn instance variable into instance method ( like @ no longer required ) in the class definition.
+	attr_accessor :board, :winner_of_game #attr_accessor turn instance variable into instance method ( like @ no longer required ) in the class definition.
 
     def initialize
         @board = ["", "", "", "", "", "", "", "", ""] #simply returning instance variable @board
+        @winner_of_game = nil
     end
 
     def set_position(position, marker)
@@ -26,29 +27,25 @@ class Board
             x_counter = 0
             o_counter = 0
             index.each do |index_check|
-                if board[index_check] == "x"
+                if @board[index_check] == "X"
                     x_counter += 1
-                elsif board[index_check] == "o"
+                elsif @board[index_check] == "O"
                     o_counter += 1
                 end
                 if x_counter == 3
+                    winner_of_game = "X"
                     winner = true
-                else o_counter == 3
+                elsif o_counter == 3
+                    winner_of_game = "O"
                     winner = true
                 end
             end
         end
         return winner 
     end
-    def winner
-        if stub_winner? 
-            puts "someone won"
-        end
-    end
+ 
     def tie
-        if stub_winner? == false && check_full? == true
-            puts "game is tie"
-        end
+        stub_winner? == false && check_full? == true
     end
 end
-game = Board.new
+# game = Board.new
